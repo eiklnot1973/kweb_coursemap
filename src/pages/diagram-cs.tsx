@@ -1,74 +1,23 @@
 import { useState, useCallback } from 'react'
 import { Background, BackgroundVariant,
-  Controls, MiniMap, Position, MarkerType,
+  Controls, MiniMap,
   ReactFlow, addEdge, applyNodeChanges, applyEdgeChanges,
   type Node, type Edge, type FitViewOptions,
   type OnConnect, type OnNodesChange,
   type OnEdgesChange, type OnNodeDrag, type DefaultEdgeOptions,
 } from '@xyflow/react'
+
 import '@xyflow/react/dist/style.css'
 
-const initialNodes: Node[] = [
-  { id: '1',
-    type: 'input',
-    data: { label: '컴퓨터 프로그래밍 I' },
-    position: { x: -200, y: 0 },
-    sourcePosition: Position.Right,
-    style: { backgroundColor: '#f1f1f1', color: 'black' },
-  },
-  {
-    id: '2',
-    data: { label: '컴퓨터 프로그래밍 II' },
-    position: { x: 0, y: 0 },
-    targetPosition: Position.Left,
-    sourcePosition: Position.Right,
-    style: { backgroundColor: '#f1f1f1', color: 'black' },
-  },
-  {
-    id: '3',
-    data: { label: '자료구조' },
-    position: { x: 200, y: 0 },
-    targetPosition: Position.Left,
-    sourcePosition: Position.Right,
-    style: { backgroundColor: '#f1f1f1', color: 'black' },
-  },
-  {
-    id: '4',
-    data: { label: '알고리즘' },
-    position: { x: 400, y: 0 },
-    targetPosition: Position.Left,
-    sourcePosition: Position.Right,
-    style: { backgroundColor: '#f1f1f1', color: 'black' },
-  },
-  {
-    id: '5',
-    type: 'input',
-    data: { label: '전산수학I' },
-    position: { x: -200, y: 100 },
-    sourcePosition: Position.Right,
-    style: { backgroundColor: '#f1f1f1', color: 'black' },
-  },
-  {
-    id: '6',
-    data: { label: '전산수학II' },
-    position: { x: 0, y: 100 },
-    targetPosition: Position.Left,
-    sourcePosition: Position.Right,
-    style: { backgroundColor: '#f1f1f1', color: 'black' },
-  },
-];
+import {
+  nodes as initialNodes,
+  edges as initialEdges,
+} from './initial-elements'
 
-const initialEdges: Edge[] = [
-  { id: 'e12', source: '1', target: '2', markerEnd: { type: MarkerType.ArrowClosed } },
-  { id: 'e23', source: '2', target: '3', markerEnd: { type: MarkerType.ArrowClosed } },
-  { id: 'e34', source: '3', target: '4', markerEnd: { type: MarkerType.ArrowClosed } },
-  { id: 'e56', source: '5', target: '6', markerEnd: { type: MarkerType.ArrowClosed } },
-];
+import CustomNode from './customNode-cs'
 
-const nodeColor = (node: Node) => {
-  return '#f1f1f1';
-};
- 
+const nodeTypes = { custom: CustomNode };
+
 const fitViewOptions: FitViewOptions = {
   padding: 0.2,
 };
@@ -103,6 +52,7 @@ function DiagramCS() {
         <ReactFlow
           nodes={nodes}
           edges={edges}
+          nodeTypes={nodeTypes}
           onNodesChange={onNodesChange}
           onEdgesChange={onEdgesChange}
           onConnect={onConnect}
@@ -112,7 +62,7 @@ function DiagramCS() {
           defaultEdgeOptions={defaultEdgeOptions}
         >
           <Controls />
-          <MiniMap nodeColor={nodeColor} nodeStrokeWidth={3} zoomable pannable />
+          <MiniMap nodeStrokeWidth={3} zoomable pannable />
           <Background color="#ccc" variant={BackgroundVariant.Dots} />
         </ReactFlow>
       );

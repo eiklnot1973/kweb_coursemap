@@ -5,10 +5,10 @@ function Home() {
     return (
       <div className="container">
         <div className="header">
-          <div className="title">정보대학 이수체계도</div>
+          <NavLink to="/" className="title">정보대학 이수체계도</NavLink>
           <div className="auth">
-            <span>로그인</span>
-            <span>회원가입</span>
+            <NavLink to="/login">로그인</NavLink>
+            <NavLink to="/signup">회원가입</NavLink>
           </div>
         </div>
         <div className="main">

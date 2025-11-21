@@ -5,6 +5,7 @@ import CoursemapDS from './pages/coursemap-ds'
 import Login from './pages/login'
 import Signup from './pages/signup'
 import Profile from './pages/profile'
+import ProfileEdit from './pages/profile-edit'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path="/profile-edit" element={<ProfileEdit />} />
     </Routes>
   );
 }

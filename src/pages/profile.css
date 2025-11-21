@@ -34,11 +34,25 @@
     background-color: #c9c9c9;
 }
 
+.profile-nickname {
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.profile-username {
+  font-size: 1.1rem;
+}
+
 .edit-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
     font-size: 0.9rem;
     background-color: #d9d9d9;
     border-radius: 6px;
     width: 110px;
+    height: 30px;
 }
 
 .comments-section {

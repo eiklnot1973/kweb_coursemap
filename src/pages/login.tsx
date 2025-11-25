@@ -18,8 +18,12 @@ function Login() {
             });
 
             const token = response.data.accessToken;
-            localStorage.setItem('accessToken', token);
+            const user = response.data.user;
 
+            localStorage.setItem('accessToken', token);
+            localStorage.setItem('username', user.username);
+            localStorage.setItem('nickname', user.nickname);
+            
             alert('로그인 성공');
             navigate('/profile'); // 프로필 페이지로 이동
         } catch (err) {

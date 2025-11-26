@@ -37,7 +37,7 @@ function DiagramCS() {
 
   const [nodes, setNodes] = useState<Node[]>(initialNodes);
   const [edges, setEdges] = useState<Edge[]>(initialEdges);
-  const [displayMode, setDisplayMode] = useState(2);
+  const [displayMode, setDisplayMode] = useState(1);
 
   const [tagFirst, setTagFirst] = useState(true);
   const [tagSecond, setTagSecond] = useState(true);
@@ -89,6 +89,7 @@ function DiagramCS() {
       <Panel position="top-left">
         <button onClick={() => setDisplayMode(1)} style={{ fontSize: '12px', border: '1px solid #333' }}>모드 1</button>
         <button onClick={() => setDisplayMode(2)} style={{ fontSize: '12px', border: '1px solid #333' }}>모드 2</button>
+        <button onClick={() => setDisplayMode(3)} style={{ fontSize: '12px', border: '1px solid #333' }}>모드 3</button>
         <div>
           1학년 과목
           <input id="ishidden" type="checkbox" checked={tagFirst} onChange={(event) => setTagFirst(event.target.checked)} />

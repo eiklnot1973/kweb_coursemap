@@ -53,3 +53,12 @@
 .tooltip-box li:last-child {
     margin-bottom: 0;
 }
+
+
+
+.mapPin {
+    position: absolute;
+    top: -90%;
+    left: 50%;
+    transform: translateX(-50%);
+}

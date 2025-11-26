@@ -44,18 +44,22 @@ function DiagramCS() {
   const [tagThird, setTagThird] = useState(true);
   const [tagFourth, setTagFourth] = useState(true);
 
+  const [filterText, setFilterText] = useState('');
+
   useEffect(() => {
     setNodes((nds) => nds.map((node) => {
       const tags = Array.isArray(node.data.tags) ? node.data.tags : [];
-      if ((tagFirst && tags.includes('1')) ||
+      const label = typeof node.data.label === 'string' ? node.data.label : '';
+      if (((tagFirst && tags.includes('1')) ||
           (tagSecond && tags.includes('2')) ||
           (tagThird && tags.includes('3')) ||
-          (tagFourth && tags.includes('4'))) {
+          (tagFourth && tags.includes('4')))
+          && label.indexOf(filterText) !== -1) {
         return { ...node, hidden: displayMode === 1 ? false : false, data: { ...node.data, displayMode: displayMode, isSelected: true } };
       }
       return { ...node, hidden: displayMode === 1 ? true : false, data: { ...node.data, displayMode: displayMode, isSelected: false } };
     }));
-  }, [tagFirst, tagSecond, tagThird, tagFourth, displayMode]);
+  }, [tagFirst, tagSecond, tagThird, tagFourth, filterText, displayMode]);
 
   const onNodesChange: OnNodesChange = useCallback(
     (changes) => setNodes((nodesSnapshot) => applyNodeChanges(changes, nodesSnapshot)),
@@ -90,6 +94,7 @@ function DiagramCS() {
         <button onClick={() => setDisplayMode(1)} style={{ fontSize: '12px', border: '1px solid #333' }}>모드 1</button>
         <button onClick={() => setDisplayMode(2)} style={{ fontSize: '12px', border: '1px solid #333' }}>모드 2</button>
         <button onClick={() => setDisplayMode(3)} style={{ fontSize: '12px', border: '1px solid #333' }}>모드 3</button>
+        <form><input type="text" value={filterText} placeholder="검색..." onChange={(e) => setFilterText(e.target.value)}/></form>
         <div>
           1학년 과목
           <input id="ishidden" type="checkbox" checked={tagFirst} onChange={(event) => setTagFirst(event.target.checked)} />

@@ -6,7 +6,8 @@ import Header from "../components/Header";
 function Profile() {
     const [username, setUsername] = useState<string | null>(null);
     const [nickname, setNickname] = useState<string | null>(null);
-    const [comments, setComments] = useState(["예시 데이터1", "예시 데이터2", "예시 데이터3", "예시 데이터4", "예시 데이터5"]); // 추후 실제 댓글 목록 받아와서 사용
+    /* const [comments, setComments] = useState(["예시 데이터1", "예시 데이터2", "예시 데이터3", "예시 데이터4", "예시 데이터5"]); // 추후 실제 댓글 목록 받아와서 사용 */
+    const comments = ["예시 데이터1", "예시 데이터2", "예시 데이터3", "예시 데이터4", "예시 데이터5"];
     
     useEffect(() => {
         const storedUsername = localStorage.getItem("username");

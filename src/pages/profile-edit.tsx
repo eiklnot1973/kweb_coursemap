@@ -55,6 +55,7 @@ function ProfileEdit() {
             );
 
             alert('닉네임 변경 완료');
+            localStorage.setItem("nickname", newNickname);
             navigate("/profile");
 
         } catch (err) {

@@ -9,7 +9,8 @@
 }
 
 .edit-container {
-    width: 320px;
+    width: 100%;
+    max-width: 320px;
     text-align: center;
 }
 
@@ -20,8 +21,8 @@
     margin-bottom: 25px;
 }
 
-.edit-layout input[type="text"],
-.edit-layout input[type="password"] {
+.section input[type="text"],
+.section input[type="password"] {
     width: 100%;
     padding: 12px;
     margin-bottom: 12px;

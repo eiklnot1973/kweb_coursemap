@@ -75,6 +75,7 @@ function DiagramCS({ setIsModalOpen }: { setIsModalOpen: (courseName: string) =>
   );
 
   const onNodeClick = useCallback((event: React.MouseEvent, node: Node) => {
+    event; /* 변수 정의해놓고 사용 안 한다는 경고 피하기 위한 아무 의미없는 코드 */
     if (node.data && typeof node.data.label === 'string') { setIsModalOpen(node.data.label); }
   }, [setIsModalOpen]);
 
